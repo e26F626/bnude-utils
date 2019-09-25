@@ -140,7 +140,7 @@
                     const timeout = 600;
                     const s = setInterval(() => {
                       tr.children[4].textContent = "正在学习 " + sc + "秒";
-                      if (++sc % timeout === 0) {
+                      if (++sc % 60 === 0) {
                         let strurl = k_url + sc;
                         win.$.ajax({
                           url: strurl,
@@ -149,25 +149,27 @@
                           async: false,
                           success: function() {
                             console.log("保存课件", name, "当前保存时间", sc);
-                            let strurl =
-                              "/elms/tools/announcement/my_announcement.jsp?type=1&courseID=702";
-                            win.$.ajax({
-                              url: strurl,
-                              type: "POST",
-                              data: "json",
-                              async: false,
-                              success: function(Data) {
-                                sc = -1;
-                                clearInterval(s);
-                                console.log("保存时间");
-                                tr.children[4].textContent =
-                                  "学习完成，总时长" + timeout + "秒";
-                              }
-                            });
+                            if (sc >= timeout) {
+                              let strurl =
+                                "/elms/tools/announcement/my_announcement.jsp?type=1&courseID=702";
+                              win.$.ajax({
+                                url: strurl,
+                                type: "POST",
+                                data: "json",
+                                async: false,
+                                success: function(Data) {
+                                  sc = -1;
+                                  clearInterval(s);
+                                  console.log("保存时间");
+                                  tr.children[4].textContent =
+                                    "学习完成，总时长" + timeout + "秒";
+                                }
+                              });
+                            }
                           }
                         });
                       }
-                    }, 888);
+                    }, 999);
                   } else {
                     console.error("获取保存课件时间链接失败！");
                   }
