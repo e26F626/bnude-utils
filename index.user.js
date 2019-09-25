@@ -1,8 +1,8 @@
 // ==UserScript==
 // @name         bnude
 // @namespace    http://www.bnude.cn/
-// @updateURL    https://github.com/e26F626/bnude-utils/raw/master/static/install.user.js
-// @downloadURL  https://github.com/e26F626/bnude-utils/raw/master/static/install.user.js
+// @updateURL    https://github.com/e26F626/bnude-utils/raw/master/index.user.js
+// @downloadURL  https://github.com/e26F626/bnude-utils/raw/master/index.user.js
 // @version      0.1
 // @description  北师大在线学习辅导工具
 // @author       未知地域
