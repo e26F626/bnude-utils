@@ -3,7 +3,7 @@
 // @namespace    http://www.bnude.cn/
 // @updateURL    https://github.com/e26F626/bnude-utils/raw/master/index.user.js
 // @downloadURL  https://github.com/e26F626/bnude-utils/raw/master/index.user.js
-// @version      0.1
+// @version      0.2
 // @description  北师大在线学习辅导工具
 // @author       未知地域
 // @match        http://www.bnude.cn/elms/index.jsp*
