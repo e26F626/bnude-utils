@@ -3,7 +3,7 @@
 // @namespace    http://www.bnude.cn/
 // @updateURL    https://github.com/e26F626/bnude-utils/raw/master/index.user.js
 // @downloadURL  https://github.com/e26F626/bnude-utils/raw/master/index.user.js
-// @version      0.2
+// @version      0.3
 // @description  北师大在线学习辅导工具
 // @author       未知地域
 // @match        http://www.bnude.cn/elms/index.jsp*
@@ -14,6 +14,7 @@
 (function() {
   "use strict";
 
+  let timeout = localStorage.timeout || 600;
   console.log(123);
   const util = {};
 
@@ -31,6 +32,8 @@
   }, 100);
 
   function start(v) {
+    let div = v.contentWindow.document.createElement("div");
+    let input = v.contentWindow.document.createElement("input");
     let b = v.contentWindow.document.createElement("button");
     b.style.position = "absolute";
     b.id = "anfoiashdfklnaskljdfhukasdhflkmn23ugfaskdn";
@@ -39,12 +42,18 @@
     b.textContent = "学习页面上的所有课件";
     b.onclick = () => {
       console.log(2);
+      if (parseInt(input.value) !== timeout) {
+        timeout = parseInt(input.value);
+        localStorage.timeout = timeout;
+      }
 
       util.__find(util.win);
     };
+    input.value = timeout;
+    div.appendChild(input);
+    div.appendChild(b);
     v.contentWindow.onload = function() {
-      v.contentWindow.document.body.appendChild(b);
-      //   b.onclick = util.__find.bind(null, v);
+      v.contentWindow.document.body.appendChild(div);
     };
 
     setInterval(() => {
@@ -137,7 +146,6 @@
                     const k_url =
                       "http://www.bnude.cn/elms/content/course/" + k_url_res[1];
                     tr.children[4].style.color = "red";
-                    const timeout = 600;
                     const s = setInterval(() => {
                       tr.children[4].textContent = "正在学习 " + sc + "秒";
                       if (++sc % 60 === 0) {
