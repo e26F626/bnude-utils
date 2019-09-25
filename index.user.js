@@ -35,10 +35,10 @@
     let div = v.contentWindow.document.createElement("div");
     let input = v.contentWindow.document.createElement("input");
     let b = v.contentWindow.document.createElement("button");
-    b.style.position = "absolute";
-    b.id = "anfoiashdfklnaskljdfhukasdhflkmn23ugfaskdn";
-    b.style.top = "0";
-    b.style.left = "0";
+    div.style.position = "absolute";
+    div.id = "anfoiashdfklnaskljdfhukasdhflkmn23ugfaskdn";
+    div.style.top = "0";
+    div.style.left = "0";
     b.textContent = "学习页面上的所有课件";
     b.onclick = () => {
       console.log(2);
@@ -61,18 +61,17 @@
         "#anfoiashdfklnaskljdfhukasdhflkmn23ugfaskdn"
       );
       if (!id) {
-        b = b.cloneNode(true);
-        v.contentWindow.document.body.appendChild(b);
+        // b = b.cloneNode(true);
+        v.contentWindow.document.body.appendChild(div);
         b.onclick = () => {
           console.log(2);
+          if (parseInt(input.value) !== timeout) {
+            timeout = parseInt(input.value);
+            localStorage.timeout = timeout;
+          }
 
           util.__find(util.win);
         };
-        // v.contentWindow.document.addEventListener("click", function(e) {
-        //   if (e.target.id === "anfoiashdfklnaskljdfhukasdhflkmn23ugfaskdn") {
-        //     console.log(123123);
-        //   }
-        // });
       }
     }, 100);
   }
